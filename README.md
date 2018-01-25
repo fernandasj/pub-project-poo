@@ -1,1 +1,4 @@
 # pub-project-poo
+
+A rotina corrida e cansativa, acaba levando as pessoas para o caminho da praticidade e comodidade em diferentes aspectos, trataremos aqui a alimentação. O tempo que seria gasto com a tarefa de cozinhar e o deslocamento até em casa para almoçar, por exemplo, passa a ser transferido para os bares e restaurantes, pois a comodidade e economia de tempo e energia é maior. O número de pessoas que fazem suas refeições fora de casa vem crescendo consideravelmente e para suprir essa demanda de forma eficiente e lucrativa, os comerciantes devem possuir total domínio do seu negócio. A fim de promover o melhor gerenciamento de bares e restaurantes, consultamos o dono da Palhoça Paraty para entender quais requisitos devem ser atendidos nesse tipo de aplicação - não é feito nenhum controle das informações do estabelecimento, o que pode acabar gerando prejuízo financeiro, perda de informações e maus investimentos para o estabelecimento.
+
