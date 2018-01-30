@@ -14,11 +14,10 @@ public class Funcionario extends Pessoa {
     private String rua;
     private String bairro;
     private String cidade;
-    private Evento evento;
-
+    
     public Funcionario(float salario, String sexo, LocalDate dataAdmissao, 
             String cargo, String rua, String bairro, String cidade, 
-            Evento evento, String cpf, String nome, String telefone, 
+            String cpf, String nome, String telefone, 
             LocalDate dataNascimento) {
         
         super(cpf, nome, telefone, dataNascimento);
@@ -29,7 +28,7 @@ public class Funcionario extends Pessoa {
         this.rua = rua;
         this.bairro = bairro;
         this.cidade = cidade;
-        this.evento = evento;
+        
     }
 
     public float getSalario() {
@@ -88,19 +87,12 @@ public class Funcionario extends Pessoa {
         this.cidade = cidade;
     }
 
-    public Evento getEvento() {
-        return evento;
-    }
-
-    public void setEvento(Evento evento) {
-        this.evento = evento;
-    }
-
     @Override
     public String toString() {
         return "Funcionario{" + "salario=" + salario + ", sexo=" + sexo + ", "
                 + "dataAdmissao=" + dataAdmissao + ", cargo=" + cargo + ", "
-                + "rua=" + rua + ", bairro=" + bairro + ", "
-                + "cidade=" + cidade + ", evento=" + evento + '}';
-    } 
+                + "rua=" + rua + ", bairro=" + bairro + ", cidade=" + cidade + '}';
+    }
+
+     
 }
