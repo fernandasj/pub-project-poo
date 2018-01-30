@@ -13,16 +13,18 @@ public class Evento extends Entrada {
     private LocalDate dataFim;
     private String descricao;
     private Cliente cliente;
+    private Funcionario funcionario;
     
     public Evento(int numPessoas, LocalDate dataInicio, 
             LocalDate dataFim, String descricao, Cliente cliente, 
-            int id, String status, float valor) {
+            int id, String status, float valor, Funcionario funcionario) {
         super(id, status, valor);
         this.numPessoas = numPessoas;
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
         this.descricao = descricao;
         this.cliente = cliente;
+        this.funcionario = funcionario;
     }
 
     public int getNumPessoas() {
@@ -65,13 +67,21 @@ public class Evento extends Entrada {
         this.cliente = cliente;
     }
 
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
+    }
+
     @Override
     public String toString() {
         return "Evento{" + "numPessoas=" + numPessoas + ", "
                 + "dataInicio=" + dataInicio + ", dataFim=" + dataFim + ", "
-                + "descricao=" + descricao + ", cliente=" + cliente + '}';
-    }  
-    
+                + "descricao=" + descricao + ", cliente=" + cliente + ", "
+                + "funcionario=" + funcionario + '}';
+    }   
 }
     
     
