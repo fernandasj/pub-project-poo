@@ -17,7 +17,7 @@ public class Funcionario extends Pessoa {
     
     public Funcionario(float salario, String sexo, LocalDate dataAdmissao, 
             String cargo, String rua, String bairro, String cidade, 
-            Evento evento, String cpf, String nome, String telefone, 
+            String cpf, String nome, String telefone, 
             LocalDate dataNascimento) {
         
         super(cpf, nome, telefone, dataNascimento);
