@@ -12,16 +12,24 @@ public class Pedido {
     private String observacao;
     private String status;
     private int quantidade;
+    private float precoProduto;
     private Produto produto;
+    private Funcionario funcionario;
+    private Comanda comanda;
 
     public Pedido(int id, LocalDateTime horario, String observacao, String status,
-            int quantidade, Produto produto) {
+            int quantidade, Produto produto, Funcionario funcionario, 
+            Comanda comanda) {
         this.id = id;
         this.horario = horario;
         this.observacao = observacao;
         this.status = status;
         this.quantidade = quantidade;
+        this.precoProduto = produto.getPreco();
         this.produto = produto;
+        this.funcionario = funcionario;
+        this.comanda = comanda;
+        
     }
     
     public int getId() {
@@ -68,14 +76,40 @@ public class Pedido {
         this.produto = produto;
     }
 
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
+    }
+
+    public Comanda getComanda() {
+        return comanda;
+    }
+
+    public void setComanda(Comanda comanda) {
+        this.comanda = comanda;
+    }
+
+    public float getPrecoProduto() {
+        return precoProduto;
+    }
+
+    public void setPrecoProduto(float precoProduto) {
+        this.precoProduto = precoProduto;
+    }
+    
+    public float calcularSubtotal(){
+        return quantidade * precoProduto;
+    }
+
     @Override
     public String toString() {
         return "Pedido{" + "id=" + id + ", horario=" + horario + ", "
                 + "observacao=" + observacao + ", status=" + status + ", "
-                + "quantidade=" + quantidade + ", produto=" + produto + '}';
-    }
-    
-    
-    
-    
+                + "quantidade=" + quantidade + ", precoProduto=" + precoProduto + ","
+                + "produto=" + produto + ", funcionario=" + funcionario + ","
+                + " comanda=" + comanda + '}';
+    }  
 }

@@ -1,17 +1,20 @@
 package modelo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author fernanda
  */
 public class Comanda extends Entrada {
     private int numMesa;
-    private Pedido pedido;
+    private List<Pedido> pedidos;
 
-    public Comanda(int numMesa, Pedido pedido, int codigo, String status, float valor) {
+    public Comanda(int numMesa, int codigo, String status, float valor) {
         super(codigo, status, valor);
         this.numMesa = numMesa;
-        this.pedido = pedido;
+        pedidos = new ArrayList<>();
     }
 
     public int getNumMesa() {
@@ -22,16 +25,21 @@ public class Comanda extends Entrada {
         this.numMesa = numMesa;
     }
 
-    public Pedido getpedido() {
-        return pedido;
+    public List<Pedido> getPedidos() {
+        return pedidos;
     }
 
-    public void setpedido(Pedido pedido) {
-        this.pedido = pedido;
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
+    
+    public void calcularValor(Pedido p){
+        this.pedidos.add(p);
+        this.setValor(this.getValor() + p.calcularSubtotal());
     }
 
     @Override
     public String toString() {
-        return "Comanda{" + "numMesa=" + numMesa + ", pedido=" + pedido + '}';
+        return "Comanda{" + "numMesa=" + numMesa + ", pedidos=" + pedidos + '}';
     }
 }

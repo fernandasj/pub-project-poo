@@ -13,19 +13,15 @@ public class Despesa {
     private LocalDateTime lancamento;  
     private LocalDate data;
     private float valorTotal;
-    private char cupomFiscal; //Ainda preciso definir melhor o tipo desse atributo,
-    //já que se trata de uma imagem.
-    
+       
     public Despesa(Funcionario funcionario, Fornecedor fornecedor, 
-            LocalDateTime lancamento, LocalDate data, float valorTotal, 
-            char cupomFiscal) {
+            LocalDateTime lancamento, LocalDate data, float valorTotal) {
         
         this.funcionario = funcionario;
         this.fornecedor = fornecedor;
         this.lancamento = lancamento;
         this.data = data;
         this.valorTotal = valorTotal;
-        this.cupomFiscal = cupomFiscal;
     }
 
     public Funcionario getFuncionario() {
@@ -68,19 +64,10 @@ public class Despesa {
         this.valorTotal = valorTotal;
     }
 
-    public char getCupomFiscal() {
-        return cupomFiscal;
-    }
-
-    public void setCupomFiscal(char cupomFiscal) {
-        this.cupomFiscal = cupomFiscal;
-    }
-
     @Override
     public String toString() {
         return "Despesa{" + "funcionario=" + funcionario + ", "
-                + "fornecedor=" + fornecedor + ", lancamento=" + lancamento + ", "
-                + "data=" + data + ", valorTotal=" + valorTotal + ", "
-                + "cupomFiscal=" + cupomFiscal + '}';
-    }    
+                + "fornecedor=" + fornecedor + ", lancamento=" + lancamento + ","
+                + " data=" + data + ", valorTotal=" + valorTotal + '}';
+    }   
 }
