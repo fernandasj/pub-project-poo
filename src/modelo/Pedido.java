@@ -1,6 +1,7 @@
 package modelo;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 /**
  *
@@ -99,11 +100,11 @@ public class Pedido {
     public void setPrecoProduto(float precoProduto) {
         this.precoProduto = precoProduto;
     }
-    
+      
     public float calcularSubtotal(){
         return quantidade * precoProduto;
     }
-
+    
     @Override
     public String toString() {
         return "Pedido{" + "id=" + id + ", horario=" + horario + ", "
@@ -111,5 +112,62 @@ public class Pedido {
                 + "quantidade=" + quantidade + ", precoProduto=" + precoProduto + ","
                 + "produto=" + produto + ", funcionario=" + funcionario + ","
                 + " comanda=" + comanda + '}';
-    }  
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 83 * hash + this.id;
+        hash = 83 * hash + Objects.hashCode(this.horario);
+        hash = 83 * hash + Objects.hashCode(this.observacao);
+        hash = 83 * hash + Objects.hashCode(this.status);
+        hash = 83 * hash + this.quantidade;
+        hash = 83 * hash + Float.floatToIntBits(this.precoProduto);
+        hash = 83 * hash + Objects.hashCode(this.produto);
+        hash = 83 * hash + Objects.hashCode(this.funcionario);
+        hash = 83 * hash + Objects.hashCode(this.comanda);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Pedido other = (Pedido) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (this.quantidade != other.quantidade) {
+            return false;
+        }
+        if (Float.floatToIntBits(this.precoProduto) != Float.floatToIntBits(other.precoProduto)) {
+            return false;
+        }
+        if (!Objects.equals(this.observacao, other.observacao)) {
+            return false;
+        }
+        if (!Objects.equals(this.status, other.status)) {
+            return false;
+        }
+        if (!Objects.equals(this.horario, other.horario)) {
+            return false;
+        }
+        if (!Objects.equals(this.produto, other.produto)) {
+            return false;
+        }
+        if (!Objects.equals(this.funcionario, other.funcionario)) {
+            return false;
+        }
+        if (!Objects.equals(this.comanda, other.comanda)) {
+            return false;
+        }
+        return true;
+    }   
 }

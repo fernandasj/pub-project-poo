@@ -2,6 +2,7 @@ package modelo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -42,4 +43,33 @@ public class Comanda extends Entrada {
     public String toString() {
         return "Comanda{" + "numMesa=" + numMesa + ", pedidos=" + pedidos + '}';
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 29 * hash + this.numMesa;
+        hash = 29 * hash + Objects.hashCode(this.pedidos);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Comanda other = (Comanda) obj;
+        if (this.numMesa != other.numMesa) {
+            return false;
+        }
+        if (!Objects.equals(this.pedidos, other.pedidos)) {
+            return false;
+        }
+        return true;
+    }   
 }

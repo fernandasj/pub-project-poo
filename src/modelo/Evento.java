@@ -6,6 +6,7 @@ package modelo;
  */
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Evento extends Entrada {
     private int numPessoas;
@@ -81,7 +82,50 @@ public class Evento extends Entrada {
                 + "dataInicio=" + dataInicio + ", dataFim=" + dataFim + ", "
                 + "descricao=" + descricao + ", cliente=" + cliente + ", "
                 + "funcionario=" + funcionario + '}';
-    }   
-}
-    
-    
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 67 * hash + this.numPessoas;
+        hash = 67 * hash + Objects.hashCode(this.dataInicio);
+        hash = 67 * hash + Objects.hashCode(this.dataFim);
+        hash = 67 * hash + Objects.hashCode(this.descricao);
+        hash = 67 * hash + Objects.hashCode(this.cliente);
+        hash = 67 * hash + Objects.hashCode(this.funcionario);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Evento other = (Evento) obj;
+        if (this.numPessoas != other.numPessoas) {
+            return false;
+        }
+        if (!Objects.equals(this.descricao, other.descricao)) {
+            return false;
+        }
+        if (!Objects.equals(this.dataInicio, other.dataInicio)) {
+            return false;
+        }
+        if (!Objects.equals(this.dataFim, other.dataFim)) {
+            return false;
+        }
+        if (!Objects.equals(this.cliente, other.cliente)) {
+            return false;
+        }
+        if (!Objects.equals(this.funcionario, other.funcionario)) {
+            return false;
+        }
+        return true;
+    }  
+}  

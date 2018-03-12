@@ -1,6 +1,7 @@
 package modelo;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 /**
  *
@@ -66,6 +67,22 @@ public class Pagamento {
         this.entrada = entrada;
     }
 
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
+    }
+
+    public LocalDateTime getHorario() {
+        return horario;
+    }
+
+    public void setHorario(LocalDateTime horario) {
+        this.horario = horario;
+    }
+    
     @Override
     public String toString() {
         return "Pagamento{" + "id=" + id + ", tipo=" + tipo + ", "
@@ -73,8 +90,53 @@ public class Pagamento {
                 + "entrada=" + entrada + ", funcionario=" + funcionario + ", "
                 + "horario=" + horario + '}';
     }
-    
-    
-    
-    
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 97 * hash + this.id;
+        hash = 97 * hash + Objects.hashCode(this.tipo);
+        hash = 97 * hash + Float.floatToIntBits(this.desconto);
+        hash = 97 * hash + Float.floatToIntBits(this.valor);
+        hash = 97 * hash + Objects.hashCode(this.entrada);
+        hash = 97 * hash + Objects.hashCode(this.funcionario);
+        hash = 97 * hash + Objects.hashCode(this.horario);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Pagamento other = (Pagamento) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (Float.floatToIntBits(this.desconto) != Float.floatToIntBits(other.desconto)) {
+            return false;
+        }
+        if (Float.floatToIntBits(this.valor) != Float.floatToIntBits(other.valor)) {
+            return false;
+        }
+        if (!Objects.equals(this.tipo, other.tipo)) {
+            return false;
+        }
+        if (!Objects.equals(this.entrada, other.entrada)) {
+            return false;
+        }
+        if (!Objects.equals(this.funcionario, other.funcionario)) {
+            return false;
+        }
+        if (!Objects.equals(this.horario, other.horario)) {
+            return false;
+        }
+        return true;
+    }
 }
