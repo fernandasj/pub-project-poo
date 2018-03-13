@@ -8,9 +8,10 @@ import java.util.Objects;
  * @author fernanda
  */
 public class Cliente extends Pessoa {
+
     private String email;
-        
-    public Cliente(String email, String cpf, String nome, String telefone, 
+
+    public Cliente(String email, String cpf, String nome, String telefone,
             LocalDate dataNascimento) {
         super(cpf, nome, telefone, dataNascimento);
         this.email = email;
@@ -52,5 +53,5 @@ public class Cliente extends Pessoa {
             return false;
         }
         return true;
-    }  
+    }
 }

@@ -7,12 +7,13 @@ import java.util.Objects;
  * @author fernanda
  */
 public abstract class Entrada {
+
     private int id;
     private String status;
     private float valor;
-    
-    public Entrada(){
-     
+
+    public Entrada() {
+
     }
 
     public Entrada(int id, String status, float valor) {
@@ -28,7 +29,7 @@ public abstract class Entrada {
     public void setId(int id) {
         this.id = id;
     }
-    
+
     public String getStatus() {
         return status;
     }
@@ -54,9 +55,7 @@ public abstract class Entrada {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 19 * hash + this.id;
-        hash = 19 * hash + Objects.hashCode(this.status);
-        hash = 19 * hash + Float.floatToIntBits(this.valor);
+        hash = 11 * hash + this.id;
         return hash;
     }
 
@@ -75,12 +74,6 @@ public abstract class Entrada {
         if (this.id != other.id) {
             return false;
         }
-        if (Float.floatToIntBits(this.valor) != Float.floatToIntBits(other.valor)) {
-            return false;
-        }
-        if (!Objects.equals(this.status, other.status)) {
-            return false;
-        }
         return true;
-    }    
+    }
 }

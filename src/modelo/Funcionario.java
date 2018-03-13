@@ -90,9 +90,10 @@ public class Funcionario extends Pessoa {
 
     @Override
     public String toString() {
-        return "Funcionario{" + "salario=" + salario + ", sexo=" + sexo + ", "
-                + "dataAdmissao=" + dataAdmissao + ", cargo=" + cargo + ","
-                + "rua=" + rua + ", bairro=" + bairro + ", cidade=" + cidade + '}';
+        return "Funcionario{" + "nome=" + this.getNome() + ", salario="
+                + salario + ", sexo=" + sexo + ", " + "dataAdmissao="
+                + dataAdmissao + ", cargo=" + cargo + "," + "rua=" + rua
+                + ", bairro=" + bairro + ", cidade=" + cidade + '}';
     }
 
     @Override

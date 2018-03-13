@@ -9,15 +9,16 @@ import java.util.Objects;
  * @author fernanda
  */
 public class Despesa {
+
     private Funcionario funcionario;
     private Fornecedor fornecedor;
-    private LocalDateTime lancamento;  
+    private LocalDateTime lancamento;
     private LocalDate data;
     private float valorTotal;
-       
-    public Despesa(Funcionario funcionario, Fornecedor fornecedor, 
+
+    public Despesa(Funcionario funcionario, Fornecedor fornecedor,
             LocalDateTime lancamento, LocalDate data, float valorTotal) {
-        
+
         this.funcionario = funcionario;
         this.fornecedor = fornecedor;
         this.lancamento = lancamento;
@@ -70,7 +71,7 @@ public class Despesa {
         return "Despesa{" + "funcionario=" + funcionario + ", "
                 + "fornecedor=" + fornecedor + ", lancamento=" + lancamento + ","
                 + " data=" + data + ", valorTotal=" + valorTotal + '}';
-    } 
+    }
 
     @Override
     public int hashCode() {
@@ -112,6 +113,5 @@ public class Despesa {
         }
         return true;
     }
-    
-    
+
 }

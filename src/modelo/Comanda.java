@@ -9,11 +9,15 @@ import java.util.Objects;
  * @author fernanda
  */
 public class Comanda extends Entrada {
+    
+    public static final String ABERTA = "ABERTA";
+    public static final String FECHADA = "FECHADA";
+    
     private int numMesa;
     private List<Pedido> pedidos;
 
-    public Comanda(int numMesa, int codigo, String status, float valor) {
-        super(codigo, status, valor);
+    public Comanda(int id, int numMesa) {
+        super(id, ABERTA, 0f);
         this.numMesa = numMesa;
         pedidos = new ArrayList<>();
     }
@@ -33,43 +37,17 @@ public class Comanda extends Entrada {
     public void setPedidos(List<Pedido> pedidos) {
         this.pedidos = pedidos;
     }
-    
-    public void calcularValor(Pedido p){
+
+    public void realizarPedido(Pedido p) {
         this.pedidos.add(p);
         this.setValor(this.getValor() + p.calcularSubtotal());
     }
 
     @Override
     public String toString() {
-        return "Comanda{" + "numMesa=" + numMesa + ", pedidos=" + pedidos + '}';
+        return "Comanda{id=" + this.getId() + ", numMesa=" + numMesa
+            + ", status=" + this.getStatus() + ", valor=" + this.getValor()
+            + "}";
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 29 * hash + this.numMesa;
-        hash = 29 * hash + Objects.hashCode(this.pedidos);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Comanda other = (Comanda) obj;
-        if (this.numMesa != other.numMesa) {
-            return false;
-        }
-        if (!Objects.equals(this.pedidos, other.pedidos)) {
-            return false;
-        }
-        return true;
-    }   
 }

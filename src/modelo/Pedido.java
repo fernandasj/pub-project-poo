@@ -107,11 +107,11 @@ public class Pedido {
     
     @Override
     public String toString() {
-        return "Pedido{" + "id=" + id + ", horario=" + horario + ", "
-                + "observacao=" + observacao + ", status=" + status + ", "
-                + "quantidade=" + quantidade + ", precoProduto=" + precoProduto + ","
+        return "Pedido{" + "id=" + id + ", horario=" + horario + ", observacao="
+                + observacao + ", status=" + status + ", quantidade=" 
+                + quantidade + ", precoProduto=" + precoProduto + ","
                 + "produto=" + produto + ", funcionario=" + funcionario + ","
-                + " comanda=" + comanda + '}';
+                + " comanda=" + comanda + "}";
     }
 
     @Override

@@ -4,20 +4,20 @@ package modelo;
  *
  * @author fernanda
  */
-
 import java.time.LocalDate;
 import java.util.Objects;
 
 public class Evento extends Entrada {
+
     private int numPessoas;
     private LocalDate dataInicio;
     private LocalDate dataFim;
     private String descricao;
     private Cliente cliente;
     private Funcionario funcionario;
-    
-    public Evento(int numPessoas, LocalDate dataInicio, 
-            LocalDate dataFim, String descricao, Cliente cliente, 
+
+    public Evento(int numPessoas, LocalDate dataInicio,
+            LocalDate dataFim, String descricao, Cliente cliente,
             int id, String status, float valor, Funcionario funcionario) {
         super(id, status, valor);
         this.numPessoas = numPessoas;
@@ -127,5 +127,5 @@ public class Evento extends Entrada {
             return false;
         }
         return true;
-    }  
-}  
+    }
+}
