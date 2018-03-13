@@ -48,7 +48,7 @@ public class NewClass {
         
         Comanda c = cadastro.buscar(1);
         
-        Pedido pedido = new Pedido(1, time , "observacao", "status", 1, P1, lf.getFuncionario(), c);
+        Pedido pedido = new Pedido(1, "observacao", "status", 1, P1, lf.getFuncionario(), c);
         c.realizarPedido(pedido);
         
         System.out.println(c.getPedidos().get(0).getFuncionario());
