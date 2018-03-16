@@ -48,6 +48,6 @@ public interface DaoGeneric <T> {
    /**
     * @return Todos os elementos de uma lista tipo T.
     */
-   
+    
    public List<T> listar();
 }

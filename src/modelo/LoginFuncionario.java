@@ -61,7 +61,7 @@ public class LoginFuncionario {
      * estejam corretos, caso contrário o resultado será: false.
      */
     
-    public boolean login (String usuario, String senha) {
-        return this.usuario == usuario && this.senha == senha;
+    public boolean login(String usuario, String senha) {
+        return this.usuario.equals(usuario) && this.senha.equals(senha);
     }
 }

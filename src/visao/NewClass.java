@@ -15,15 +15,15 @@ import modelo.Produto;
  */
 public class NewClass {
     public static void main(String[] args) {
-        LocalDate data = LocalDate.now();
-        LocalDateTime time = LocalDateTime.now();
-        
-        Funcionario F1 = new Funcionario(900f, "Feminino", data, "skdjsd", "rua", 
-                "bairro", "cidade", "cpf", "Maria", "telefone", data);
-        
-        Produto P1 = new Produto(1, "descricao", 12f, "Fava");
-        Produto P2= new Produto(1, "descricao", 22f, "Carne");
-        
+//        LocalDate data = LocalDate.now();
+//        LocalDateTime time = LocalDateTime.now();
+//        
+//        Funcionario F1 = new Funcionario(900f, "Feminino", data, "skdjsd", "rua", 
+//                "bairro", "cidade", "cpf", "Maria", "telefone", data);
+//        
+//        Produto P1 = new Produto(1, "descricao", 12f, "Fava");
+//        Produto P2= new Produto(1, "descricao", 22f, "Carne");
+//        
         //Comanda C1 = new Comanda(2, 1, "status", 0);
         
        
@@ -38,24 +38,29 @@ public class NewClass {
         //System.out.println(C1.getPedidos().get(0).getPrecoProduto());
         //System.out.println(C1.getValor());
         
-        ComandaDao cadastro = new ComandaDao();
-        cadastro.salvar(new Comanda(1, 2));
-        
-        LoginFuncionario lf = new LoginFuncionario();
-        System.out.println(lf.login("admin", "admin123"));
-        System.out.println(lf.login("admin", "admin222"));
-        System.out.println(lf.login("admnn", "admin123"));
-        
-        Comanda c = cadastro.buscar(1);
-        
-        Pedido pedido = new Pedido(1, "observacao", "status", 1, P1, lf.getFuncionario(), c);
-        c.realizarPedido(pedido);
-        
-        System.out.println(c.getPedidos().get(0).getFuncionario());
-        
-        System.out.println(cadastro.buscar(1).getPedidos().get(0).getObservacao());
-        System.out.println(cadastro.salvar(new Comanda(1, 3)));
-        
-        System.out.println(cadastro.listarPeloStatus(Comanda.ABERTA));
+//        ComandaDao cadastro = new ComandaDao();
+//        cadastro.salvar(new Comanda(1, 2));
+//        
+//        LoginFuncionario lf = new LoginFuncionario();
+//        System.out.println(lf.login("admin", "admin123"));
+//        System.out.println(lf.login("admin", "admin222"));
+//        System.out.println(lf.login("admnn", "admin123"));
+//        
+//        Comanda c = cadastro.buscar(1);
+//        
+//        Pedido pedido = new Pedido(1, "observacao", "status", 1, P1, lf.getFuncionario(), c);
+//        c.realizarPedido(pedido);
+//        
+//        System.out.println(c.getPedidos().get(0).getFuncionario());
+//        
+//        System.out.println(cadastro.buscar(1).getPedidos().get(0).getObservacao());
+//        System.out.println(cadastro.salvar(new Comanda(1, 3)));
+//        
+//        System.out.println(cadastro.listarPeloStatus(Comanda.ABERTA));
+           
+          //AbrirComanda.run();
+          //RealizarLogin.run();
+          MostrarMenu.run();
+          
     }
 }
