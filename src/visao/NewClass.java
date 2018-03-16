@@ -1,6 +1,6 @@
 package visao;
 
-import dao.CadastroGeneric;
+import dao.ComandaDao;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import modelo.Comanda;
@@ -38,7 +38,7 @@ public class NewClass {
         //System.out.println(C1.getPedidos().get(0).getPrecoProduto());
         //System.out.println(C1.getValor());
         
-        CadastroGeneric cadastro = new CadastroGeneric();
+        ComandaDao cadastro = new ComandaDao();
         cadastro.salvar(new Comanda(1, 2));
         
         LoginFuncionario lf = new LoginFuncionario();

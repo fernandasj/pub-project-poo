@@ -18,11 +18,9 @@ public class Pedido {
     private Funcionario funcionario;
     private Comanda comanda;
 
-    public Pedido(int id, LocalDateTime horario, String observacao, String status,
-            int quantidade, Produto produto, Funcionario funcionario, 
-            Comanda comanda) {
+    public Pedido(int id, String observacao, String status, int quantidade,
+            Produto produto, Funcionario funcionario, Comanda comanda) {
         this.id = id;
-        this.horario = horario;
         this.observacao = observacao;
         this.status = status;
         this.quantidade = quantidade;
@@ -30,6 +28,7 @@ public class Pedido {
         this.produto = produto;
         this.funcionario = funcionario;
         this.comanda = comanda;
+        this.horario = LocalDateTime.now();
         
     }
     
