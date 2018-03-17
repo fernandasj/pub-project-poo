@@ -27,16 +27,23 @@ public class MostrarMenu {
             case 1:
                 AbrirComanda.run();
                 break;
-
+                
+            case 2:
+                RealizarPedido.run();
+                break;
+                
             case 3:
                 FecharComanda.run();
-
+                break;
+                
             case 4:
-                ComandaDao cadastro = new ComandaDao();
-                cadastro.listarPeloStatus("ABERTA");
-
+                
+                ListarComandasAbertas.run();
+                break;
+                
             case 5:
                 System.exit(0);
+                break;
         }
     }
 }

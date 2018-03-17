@@ -51,6 +51,8 @@ public class RealizarPedido {
                 if (quantidade > 0) {
                     Pedido pedido = new Pedido(idPedido, observacao, quantidade,
                             produto, login.getFuncionario(), comanda);
+
+                    comanda.realizarPedido(pedido);
                 } else {
                     System.out.println("QUANTIDADE INVÁLIDA");
                 }
