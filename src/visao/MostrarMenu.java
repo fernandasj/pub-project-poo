@@ -1,6 +1,5 @@
 package visao;
 
-import dao.ComandaDao;
 import java.util.Scanner;
 
 /**
