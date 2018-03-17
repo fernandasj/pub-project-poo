@@ -71,7 +71,6 @@ public class ComandaDao implements DaoGeneric<Comanda> {
      * deseja modificar. Caso a comanda não seja encontrada é retornado FALSE.
      * @return A confirmação da atualização.
      */
-    
     @Override
     public boolean atualizar(Comanda c) {
         for (int i = 0; i < comandas.size(); i++) {
@@ -86,7 +85,6 @@ public class ComandaDao implements DaoGeneric<Comanda> {
     /**
      * @return Todas as comandas da lista.
      */
-    
     @Override
     public List<Comanda> listar() {
         return comandas;
