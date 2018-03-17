@@ -23,8 +23,10 @@ public class RealizarLogin {
         if(autenticar.login(usuario, senha)) {
             Funcionario funcionario = autenticar.getFuncionario();
             System.out.println("OLÁ, "+autenticar.getFuncionario().getNome());
+            MostrarMenu.run();
         }else{
             System.out.println("USUARIO E/OU SENHA INCORRETO(S)");
+            RealizarLogin.run();
         }    
     }    
 }

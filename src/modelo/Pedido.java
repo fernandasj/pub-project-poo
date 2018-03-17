@@ -18,11 +18,11 @@ public class Pedido {
     private Funcionario funcionario;
     private Comanda comanda;
 
-    public Pedido(int id, String observacao, String status, int quantidade,
+    public Pedido(int id, String observacao, int quantidade,
             Produto produto, Funcionario funcionario, Comanda comanda) {
         this.id = id;
         this.observacao = observacao;
-        this.status = status;
+        this.status = "REALIZADO";
         this.quantidade = quantidade;
         this.precoProduto = produto.getPreco();
         this.produto = produto;

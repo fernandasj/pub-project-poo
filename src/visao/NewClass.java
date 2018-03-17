@@ -60,7 +60,9 @@ public class NewClass {
            
           //AbrirComanda.run();
           //RealizarLogin.run();
-          MostrarMenu.run();
+          //MostrarMenu.run();
+          ListarProdutos.run();
+          
           
     }
 }
