@@ -4,6 +4,7 @@ import dao.ComandaDao;
 import dao.ProdutoDao;
 import java.util.Scanner;
 import modelo.Comanda;
+import modelo.Funcionario;
 import modelo.LoginFuncionario;
 import modelo.Pedido;
 import modelo.Produto;
@@ -14,13 +15,9 @@ import modelo.Produto;
  */
 public class RealizarPedido {
 
-    public static void run() {
+    public static void run(Funcionario funcionario, ComandaDao cadastro) {
 
         Scanner scanner = new Scanner(System.in);
-
-        LoginFuncionario login = new LoginFuncionario();
-
-        ComandaDao cadastro = new ComandaDao();
 
         ProdutoDao produtos = new ProdutoDao();
 
@@ -31,7 +28,7 @@ public class RealizarPedido {
 
         if (comanda != null && comanda.getStatus().equals(Comanda.ABERTA)) {
 
-            ListarProdutos.run();
+            ListarProdutos.run(produtos);
 
             System.out.print("ID DO PRODUTO: ");
             Integer idProduto = scanner.nextInt();
@@ -50,7 +47,7 @@ public class RealizarPedido {
 
                 if (quantidade > 0) {
                     Pedido pedido = new Pedido(idPedido, observacao, quantidade,
-                            produto, login.getFuncionario(), comanda);
+                            produto, funcionario, comanda);
 
                     comanda.realizarPedido(pedido);
                 } else {
@@ -63,6 +60,5 @@ public class RealizarPedido {
         } else {
             System.out.println("COMANDA NÃO ENCONTRADA");
         }
-        MostrarMenu.run();
     }
 }

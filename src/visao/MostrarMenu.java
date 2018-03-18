@@ -1,14 +1,24 @@
 package visao;
 
+import dao.ComandaDao;
 import java.util.Scanner;
+import modelo.Funcionario;
 
 /**
  *
  * @author fernanda
  */
 public class MostrarMenu {
+    
+    private ComandaDao cadastro;
+    private Funcionario funcionario;
 
-    public static void run() {
+    public MostrarMenu(Funcionario funcionario) {
+        this.cadastro = new ComandaDao();
+        this.funcionario = funcionario;
+    }
+    
+    public void run() {
         System.out.println("============= MENU ============== \n "
                 + "=== | 1 - ABRIR COMANDA   | === \n "
                 + "=== | 2 - REALIZAR PEDIDO | === \n"
@@ -24,25 +34,22 @@ public class MostrarMenu {
 
         switch (opcao) {
             case 1:
-                AbrirComanda.run();
+                AbrirComanda.run(this.cadastro);
                 break;
-                
             case 2:
-                RealizarPedido.run();
+                RealizarPedido.run(this.funcionario, this.cadastro);
                 break;
-                
             case 3:
-                FecharComanda.run();
+                FecharComanda.run(this.cadastro);
                 break;
-                
             case 4:
-                
-                ListarComandasAbertas.run();
+                ListarComandasAbertas.run(this.cadastro);
                 break;
-                
             case 5:
                 System.exit(0);
                 break;
         }
+
+        this.run();
     }
 }

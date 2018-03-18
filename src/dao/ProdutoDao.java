@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import modelo.Produto;
 
@@ -18,10 +19,18 @@ public class ProdutoDao implements DaoGeneric<Produto> {
     private List<Produto> produtos;
 
     /**
-     * Cria um novo Dao com uma lista vazia
+     * Cria um novo Dao com uma uma lista preechida estaticamente
      */
     public ProdutoDao() {
         produtos = new ArrayList<>();
+        produtos = new ArrayList<>(Arrays.asList(
+                new Produto(1, "porção individual", 12f, "Fava"),
+                new Produto(2, "porção individual", 13f, "Batata frita"),
+                new Produto(3, "1000ml", 8f, "Coca-cola"),
+                new Produto(4, "Acompanha: baião, pirão e salada", 40f,
+                "Peixe frito"),
+                new Produto(5, "600ml", 6f, "Skol 600ml"),
+                new Produto(6, "unidade", 3.5f, "Coco natural")));  
     }
 
     /**
@@ -88,9 +97,6 @@ public class ProdutoDao implements DaoGeneric<Produto> {
      */
     @Override
     public List<Produto> listar() {
-        for (Produto produto : produtos) {
-            System.out.println(produto);
-        }
-        return null;
+        return produtos;
     }
 }

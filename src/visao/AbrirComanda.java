@@ -9,9 +9,8 @@ import modelo.Comanda;
  * @author fernanda
  */
 public class AbrirComanda {
-    public static void run() {
-        ComandaDao cadastro = new ComandaDao();
-        
+    public static void run(ComandaDao cadastro) {
+               
         Scanner scanner = new Scanner(System.in);
         
         System.out.print("ID:");
@@ -27,6 +26,5 @@ public class AbrirComanda {
         } else {
             System.out.println("NÃO FOI POSSÍVEL SALVAR A COMANDA");
         }
-        MostrarMenu.run();
     }
 }
