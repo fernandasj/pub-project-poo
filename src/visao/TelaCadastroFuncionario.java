@@ -10,6 +10,7 @@ import dao.FuncionarioDao;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import javax.swing.JOptionPane;
 import modelo.Funcionario;
 
@@ -392,7 +393,11 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Classe não encontrada");
             this.dispose();
-        } 
+        } catch (NullPointerException ex){
+            JOptionPane.showMessageDialog(null, "Campos vazios");
+        } catch (DateTimeParseException ex){
+            JOptionPane.showMessageDialog(null, "Data inválida");
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -418,6 +423,8 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Classe não encontrada");
             this.dispose();
+        } catch (NullPointerException ex){
+            JOptionPane.showMessageDialog(null, "Campos vazios");
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -457,6 +464,10 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Classe não encontrada");
             this.dispose();
+        } catch (NullPointerException ex){
+            JOptionPane.showMessageDialog(null, "Campos vazios");
+        } catch (DateTimeParseException ex){
+            JOptionPane.showMessageDialog(null, "Data inválida");
         }
             
     }//GEN-LAST:event_jButton4ActionPerformed

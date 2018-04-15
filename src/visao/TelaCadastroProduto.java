@@ -264,7 +264,9 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Classe não encontrada");
             this.dispose();
-        }  
+        } catch (NullPointerException ex){
+            JOptionPane.showMessageDialog(null, "Campos vazios");
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -312,6 +314,8 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Classe não encontrada");
             this.dispose();
+        } catch (NullPointerException ex){
+            JOptionPane.showMessageDialog(null, "Campos vazios");
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -342,6 +346,8 @@ public class TelaCadastroProduto extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Classe não encontrada");
             this.dispose();
+        } catch (NullPointerException ex){
+            JOptionPane.showMessageDialog(null, "Campos vazios");
         }
         
     }//GEN-LAST:event_jButton4ActionPerformed

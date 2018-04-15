@@ -340,6 +340,8 @@ public class TelaCadastroPedido extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Classe não encontrada");
             this.dispose();
+        } catch (NullPointerException ex){
+            JOptionPane.showMessageDialog(null, "Campos vazios");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -358,8 +360,7 @@ public class TelaCadastroPedido extends javax.swing.JFrame {
                 jSpinner1.setValue(p.getQuantidade());
                 jComboBox1.setSelectedItem(p.getComanda());
                 jComboBox2.setSelectedItem(p.getProduto());
-//                System.out.println(p.getProduto());
-//                System.out.println(p.getComanda());
+
             } else {
                 JOptionPane.showMessageDialog(null, "Pedido não encontrado");
             }
@@ -369,6 +370,8 @@ public class TelaCadastroPedido extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Classe não encontrada");
             this.dispose();
+        } catch (NullPointerException ex){
+            JOptionPane.showMessageDialog(null, "Campos vazios");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -394,7 +397,9 @@ public class TelaCadastroPedido extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Classe não encontrada");
             this.dispose();
-        }   
+        } catch (NullPointerException ex){
+            JOptionPane.showMessageDialog(null, "Campos vazios");
+        }  
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -427,7 +432,9 @@ public class TelaCadastroPedido extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Classe não encontrada");
             this.dispose();
-        }   
+        } catch (NullPointerException ex){
+            JOptionPane.showMessageDialog(null, "Campos vazios");
+        }  
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

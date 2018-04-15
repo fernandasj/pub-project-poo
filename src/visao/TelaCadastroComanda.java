@@ -275,7 +275,9 @@ public class TelaCadastroComanda extends javax.swing.JFrame {
                 } catch (ClassNotFoundException ex) {
                     JOptionPane.showMessageDialog(null, "Classe não encontrada");
                     this.dispose();
-                } 
+                } catch (NullPointerException ex){
+                    JOptionPane.showMessageDialog(null, "Campos vazios");
+                }
                 
             } else {
                 JOptionPane.showMessageDialog(null, "O valor inicial da comanda "
@@ -331,7 +333,9 @@ public class TelaCadastroComanda extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Classe não encontrada");
             this.dispose();
-        }   
+        } catch (NullPointerException ex){
+            JOptionPane.showMessageDialog(null, "Campos vazios");
+        } 
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -357,6 +361,8 @@ public class TelaCadastroComanda extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Classe não encontrada");
             this.dispose();
+        }  catch (NullPointerException ex){
+            JOptionPane.showMessageDialog(null, "Campos vazios");
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 

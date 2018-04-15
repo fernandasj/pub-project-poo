@@ -190,6 +190,8 @@ public class TelaLogin extends javax.swing.JFrame {
             this.dispose();
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Classe não encontrada");
+        } catch (NullPointerException ex){
+            JOptionPane.showMessageDialog(null, "Campos vazios");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
