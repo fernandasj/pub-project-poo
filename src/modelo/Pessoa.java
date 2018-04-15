@@ -1,5 +1,6 @@
 package modelo;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -7,7 +8,7 @@ import java.util.Objects;
  *
  * @author fernanda
  */
-public abstract class Pessoa {
+public abstract class Pessoa implements Serializable {
     private String cpf;
     private String nome;
     private String telefone;

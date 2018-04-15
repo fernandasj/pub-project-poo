@@ -18,7 +18,7 @@ public class Evento extends Entrada {
 
     public Evento(int numPessoas, LocalDate dataInicio,
             LocalDate dataFim, String descricao, Cliente cliente,
-            int id, String status, float valor, Funcionario funcionario) {
+            String id, String status, float valor, Funcionario funcionario) {
         super(id, status, valor);
         this.numPessoas = numPessoas;
         this.dataInicio = dataInicio;

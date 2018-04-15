@@ -1,5 +1,6 @@
 package modelo;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -7,8 +8,8 @@ import java.util.Objects;
  *
  * @author fernanda
  */
-public class Pedido {
-    private int id;
+public class Pedido implements Serializable {
+    private String id;
     private LocalDateTime horario;
     private String observacao;
     private String status;
@@ -18,21 +19,21 @@ public class Pedido {
     private Funcionario funcionario;
     private Comanda comanda;
 
-    public Pedido(int id, String observacao, int quantidade,
+    public Pedido(String id, String observacao, String status, int quantidade,
             Produto produto, Funcionario funcionario, Comanda comanda) {
         this.id = id;
         this.observacao = observacao;
-        this.status = "REALIZADO";
+        this.status = status;
         this.quantidade = quantidade;
-        this.precoProduto = produto.getPreco();
         this.produto = produto;
         this.funcionario = funcionario;
         this.comanda = comanda;
         this.horario = LocalDateTime.now();
+        this.precoProduto = produto.getPreco();
         
     }
     
-    public int getId() {
+    public String getId() {
         return id;
     }
     
@@ -101,7 +102,7 @@ public class Pedido {
     }
       
     public float calcularSubtotal(){
-        return quantidade * precoProduto;
+        return getQuantidade() * getPrecoProduto();
     }
     
     @Override
@@ -115,16 +116,16 @@ public class Pedido {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 83 * hash + this.id;
-        hash = 83 * hash + Objects.hashCode(this.horario);
-        hash = 83 * hash + Objects.hashCode(this.observacao);
-        hash = 83 * hash + Objects.hashCode(this.status);
-        hash = 83 * hash + this.quantidade;
-        hash = 83 * hash + Float.floatToIntBits(this.precoProduto);
-        hash = 83 * hash + Objects.hashCode(this.produto);
-        hash = 83 * hash + Objects.hashCode(this.funcionario);
-        hash = 83 * hash + Objects.hashCode(this.comanda);
+        int hash = 3;
+        hash = 37 * hash + Objects.hashCode(this.id);
+        hash = 37 * hash + Objects.hashCode(this.horario);
+        hash = 37 * hash + Objects.hashCode(this.observacao);
+        hash = 37 * hash + Objects.hashCode(this.status);
+        hash = 37 * hash + this.quantidade;
+        hash = 37 * hash + Float.floatToIntBits(this.precoProduto);
+        hash = 37 * hash + Objects.hashCode(this.produto);
+        hash = 37 * hash + Objects.hashCode(this.funcionario);
+        hash = 37 * hash + Objects.hashCode(this.comanda);
         return hash;
     }
 
@@ -140,13 +141,13 @@ public class Pedido {
             return false;
         }
         final Pedido other = (Pedido) obj;
-        if (this.id != other.id) {
-            return false;
-        }
         if (this.quantidade != other.quantidade) {
             return false;
         }
         if (Float.floatToIntBits(this.precoProduto) != Float.floatToIntBits(other.precoProduto)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         if (!Objects.equals(this.observacao, other.observacao)) {
@@ -168,5 +169,8 @@ public class Pedido {
             return false;
         }
         return true;
-    }   
+    }
+
+    
+    
 }

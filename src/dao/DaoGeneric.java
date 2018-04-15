@@ -1,6 +1,7 @@
-
 package dao;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -19,14 +20,16 @@ public interface DaoGeneric <T> {
     * @return A confirmação da inserção.
     */
     
-   public boolean salvar(T e);
+   public boolean salvar(T e) throws IOException, ClassNotFoundException, 
+           FileNotFoundException;
    
    /**
     * @param e elemento com tipo T que será deletado no DAO. 
     * @return A confirmação da exclusão.
     */
 
-   public boolean deletar(T e);
+   public boolean deletar(T e) throws IOException, ClassNotFoundException, 
+           FileNotFoundException;
    
    /**
     * @param id número do id do elemento que será buscado no DAO. Antes de buscar,
@@ -34,7 +37,8 @@ public interface DaoGeneric <T> {
     * @return O elemento desejado.
     */
 
-   public  T buscar(int id);
+   public  T buscar(String id) throws IOException, ClassNotFoundException, 
+           FileNotFoundException;
    
    /**
     * @param elemento elemento com tipo T que será atualizado no DAO. Antes de 
@@ -43,11 +47,13 @@ public interface DaoGeneric <T> {
     * @return A confirmação da atualização.
     */
 
-   public boolean atualizar(T elemento);
+   public boolean atualizar(T elemento) throws IOException, ClassNotFoundException, 
+           FileNotFoundException;
    
    /**
     * @return Todos os elementos de uma lista tipo T.
     */
     
-   public List<T> listar();   
+   public List<T> listar() throws IOException, ClassNotFoundException, 
+           FileNotFoundException;   
 }

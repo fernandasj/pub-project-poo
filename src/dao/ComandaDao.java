@@ -1,5 +1,12 @@
 package dao;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.Comanda;
@@ -11,17 +18,21 @@ import modelo.Comanda;
  *
  * @author fernanda
  * @see java.util.List
- * @see java.util.ArrayLista
+ * @see java.util.ArrayList
  */
 public class ComandaDao implements DaoGeneric<Comanda> {
 
-    private List<Comanda> comandas;
+    private File file;
 
     /**
      * Cria um novo Dao com uma lista vazia
      */
-    public ComandaDao() {
-        comandas = new ArrayList<>();
+    public ComandaDao() throws IOException {
+        file = new File("Arquivos/comandas.bin");
+        
+        if (!file.exists()) {
+            file.createNewFile();
+        }
     }
 
     /**
@@ -31,13 +42,22 @@ public class ComandaDao implements DaoGeneric<Comanda> {
      * @return A confirmação da inserção.
      */
     @Override
-    public boolean salvar(Comanda c) {
-        for (Comanda comanda : comandas) {
-            if (c.equals(comanda)) {
+    public boolean salvar(Comanda c) throws IOException, FileNotFoundException, 
+            ClassNotFoundException {
+        
+        if(buscar(c.getId()) == null){
+            
+            List<Comanda> comandas = listar();
+            
+            if (comandas.add(c)) {
+                atualizarArquivo(comandas);
+                return true;
+            } else {
                 return false;
             }
-        }
-        return comandas.add(c);
+        } else {
+            return false;
+        }    
     }
 
     /**
@@ -45,8 +65,20 @@ public class ComandaDao implements DaoGeneric<Comanda> {
      * @return A confirmação da exclusão.
      */
     @Override
-    public boolean deletar(Comanda c) {
-        return comandas.remove(c);
+    public boolean deletar(Comanda c) throws IOException, FileNotFoundException, 
+            ClassNotFoundException {
+        
+        List<Comanda> comandas = listar();
+        System.out.println(comandas);
+        boolean result = comandas.remove(c);
+        System.out.println(comandas.remove(c));
+        System.out.println(comandas);
+        if (result) {
+            atualizarArquivo(comandas);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -55,10 +87,15 @@ public class ComandaDao implements DaoGeneric<Comanda> {
      * NULL.
      * @return A comanda desejada.
      */
+    
     @Override
-    public Comanda buscar(int id) {
+    public Comanda buscar(String id) throws IOException, FileNotFoundException, 
+            ClassNotFoundException {
+        
+        List <Comanda> comandas = listar();
+        
         for (Comanda comanda : comandas) {
-            if (comanda.getId() == id) {
+            if (id.equals(comanda.getId())) {
                 return comanda;
             }
         }
@@ -72,10 +109,15 @@ public class ComandaDao implements DaoGeneric<Comanda> {
      * @return A confirmação da atualização.
      */
     @Override
-    public boolean atualizar(Comanda c) {
+    public boolean atualizar(Comanda c) throws IOException, FileNotFoundException, 
+            ClassNotFoundException {
+        
+        List <Comanda> comandas = listar();
+        
         for (int i = 0; i < comandas.size(); i++) {
-            if (comandas.get(i).equals(c)) {
+            if (comandas.get(i).getId().equals(c.getId())) {
                 comandas.set(i, c);
+                atualizarArquivo(comandas);
                 return true;
             }
         }
@@ -86,40 +128,43 @@ public class ComandaDao implements DaoGeneric<Comanda> {
      * @return Todas as comandas da lista.
      */
     @Override
-    public List<Comanda> listar() {
-        return comandas;
-    }
-
-    /**
-     * @param status nome do status que se deseja agrupar as comandas. Para
-     * fazer esse agrupamento/seleção/lista, é criada uma nova lista do tipo
-     * Comanda que irá armazenar todas as comandas com o status desejado,
-     * selecionadas da lista que contém todas as comandas do sistema.
-     * @return Lista de comandas com o status desejado.
-     */
-    public List<Comanda> listarPeloStatus(String status) {
-        List<Comanda> resultado = new ArrayList<>();
-        for (Comanda comanda : comandas) {
-            if (comanda.getStatus() == status) {
-                resultado.add(comanda);
-            }
+    public List<Comanda> listar() throws FileNotFoundException, IOException, 
+            ClassNotFoundException {
+        
+        if(file.length() > 0){
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
+            
+            return (List<Comanda>) in.readObject();
+            
+        } else {
+            return new ArrayList<>();
         }
-
-        return resultado;
     }
 
+    
     /**
      * @param id número do id da comanda que deseja fechar, antes de fechar a
      * comanda, é realizada a busca da comanda utilizando o metodo: buscar,
      * implementado anteriormente.
      * @return A confirmação do fechamento e o histórico de comandas fechadas.
      */
-    public boolean fecharComanda(int id) {
+    public boolean fecharComanda(String id) throws IOException, FileNotFoundException, 
+            ClassNotFoundException {
+        
         Comanda comanda = buscar(id);
         if (comanda != null) {
             comanda.setStatus("FECHADA");
             return true;
         }
         return false;
+    }
+
+    private void atualizarArquivo(List<Comanda> comandas) throws FileNotFoundException, 
+            IOException {
+        
+        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
+
+        out.writeObject(comandas);
+        out.close();
     }
 }

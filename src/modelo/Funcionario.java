@@ -9,26 +9,19 @@ import java.util.Objects;
  */
 public class Funcionario extends Pessoa {
     private float salario;
-    private String sexo;
     private LocalDate dataAdmissao;
     private String cargo;
-    private String rua;
-    private String bairro;
-    private String cidade;
+    private String senha;
     
-    public Funcionario(float salario, String sexo, LocalDate dataAdmissao, 
-            String cargo, String rua, String bairro, String cidade, 
-            String cpf, String nome, String telefone, 
+    public Funcionario(float salario, LocalDate dataAdmissao, 
+            String cargo, String senha, String cpf, String nome, String telefone, 
             LocalDate dataNascimento) {
         
         super(cpf, nome, telefone, dataNascimento);
         this.salario = salario;
-        this.sexo = sexo;
         this.dataAdmissao = dataAdmissao;
         this.cargo = cargo;
-        this.rua = rua;
-        this.bairro = bairro;
-        this.cidade = cidade;
+        this.senha = senha;
         
     }
 
@@ -38,14 +31,6 @@ public class Funcionario extends Pessoa {
 
     public void setSalario(float salario) {
         this.salario = salario;
-    }
-
-    public String getSexo() {
-        return sexo;
-    }
-
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
     }
 
     public LocalDate getDataAdmissao() {
@@ -64,48 +49,26 @@ public class Funcionario extends Pessoa {
         this.cargo = cargo;
     }
 
-    public String getRua() {
-        return rua;
+    public String getSenha() {
+        return senha;
     }
 
-    public void setRua(String rua) {
-        this.rua = rua;
-    }
-
-    public String getBairro() {
-        return bairro;
-    }
-
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
-    }
-
-    public String getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     @Override
     public String toString() {
-        return "Funcionario{" + "nome=" + this.getNome() + ", salario="
-                + salario + ", sexo=" + sexo + ", " + "dataAdmissao="
-                + dataAdmissao + ", cargo=" + cargo + "," + "rua=" + rua
-                + ", bairro=" + bairro + ", cidade=" + cidade + '}';
+        return this.getNome() + "cpf=" + this.getCpf() + '}';
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 47 * hash + Float.floatToIntBits(this.salario);
-        hash = 47 * hash + Objects.hashCode(this.sexo);
-        hash = 47 * hash + Objects.hashCode(this.dataAdmissao);
-        hash = 47 * hash + Objects.hashCode(this.cargo);
-        hash = 47 * hash + Objects.hashCode(this.rua);
-        hash = 47 * hash + Objects.hashCode(this.bairro);
-        hash = 47 * hash + Objects.hashCode(this.cidade);
+        int hash = 5;
+        hash = 89 * hash + Float.floatToIntBits(this.salario);
+        hash = 89 * hash + Objects.hashCode(this.dataAdmissao);
+        hash = 89 * hash + Objects.hashCode(this.cargo);
+        hash = 89 * hash + Objects.hashCode(this.senha);
         return hash;
     }
 
@@ -124,24 +87,17 @@ public class Funcionario extends Pessoa {
         if (Float.floatToIntBits(this.salario) != Float.floatToIntBits(other.salario)) {
             return false;
         }
-        if (!Objects.equals(this.sexo, other.sexo)) {
-            return false;
-        }
         if (!Objects.equals(this.cargo, other.cargo)) {
             return false;
         }
-        if (!Objects.equals(this.rua, other.rua)) {
-            return false;
-        }
-        if (!Objects.equals(this.bairro, other.bairro)) {
-            return false;
-        }
-        if (!Objects.equals(this.cidade, other.cidade)) {
+        if (!Objects.equals(this.senha, other.senha)) {
             return false;
         }
         if (!Objects.equals(this.dataAdmissao, other.dataAdmissao)) {
             return false;
         }
         return true;
-    }   
+    }
+
+   
 }

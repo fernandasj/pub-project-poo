@@ -1,25 +1,26 @@
 package modelo;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  *
  * @author fernanda
  */
-public class Produto {
-    private final int id;
+public class Produto implements Serializable {
+    private final String id;
     private String descricao;
     private float preco;
     private String nome;
 
-    public Produto(int id, String descricao, float preco, String nome) {
+    public Produto(String id, String descricao, float preco, String nome) {
         this.id = id;
         this.descricao = descricao;
         this.preco = preco;
         this.nome = nome;
     }
     
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -49,17 +50,16 @@ public class Produto {
 
     @Override
     public String toString() {
-        return "Produto{" + "id=" + id + ", descricao=" + descricao + ", "
-                + "preco=" + preco + ", nome=" + nome + '}';
+        return id + " - " + nome;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 41 * hash + this.id;
-        hash = 41 * hash + Objects.hashCode(this.descricao);
-        hash = 41 * hash + Float.floatToIntBits(this.preco);
-        hash = 41 * hash + Objects.hashCode(this.nome);
+        int hash = 3;
+        hash = 59 * hash + Objects.hashCode(this.id);
+        hash = 59 * hash + Objects.hashCode(this.descricao);
+        hash = 59 * hash + Float.floatToIntBits(this.preco);
+        hash = 59 * hash + Objects.hashCode(this.nome);
         return hash;
     }
 
@@ -75,10 +75,10 @@ public class Produto {
             return false;
         }
         final Produto other = (Produto) obj;
-        if (this.id != other.id) {
+        if (Float.floatToIntBits(this.preco) != Float.floatToIntBits(other.preco)) {
             return false;
         }
-        if (Float.floatToIntBits(this.preco) != Float.floatToIntBits(other.preco)) {
+        if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         if (!Objects.equals(this.descricao, other.descricao)) {
@@ -88,5 +88,7 @@ public class Produto {
             return false;
         }
         return true;
-    }  
+    }
+    
+    
 }

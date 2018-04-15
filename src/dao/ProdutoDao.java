@@ -1,7 +1,13 @@
 package dao;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import modelo.Produto;
 
@@ -16,21 +22,17 @@ import modelo.Produto;
  */
 public class ProdutoDao implements DaoGeneric<Produto> {
 
-    private List<Produto> produtos;
+    private File file;
 
     /**
      * Cria um novo Dao com uma uma lista preechida estaticamente
      */
-    public ProdutoDao() {
-        produtos = new ArrayList<>();
-        produtos = new ArrayList<>(Arrays.asList(
-                new Produto(1, "porção individual", 12f, "Fava"),
-                new Produto(2, "porção individual", 13f, "Batata frita"),
-                new Produto(3, "1000ml", 8f, "Coca-cola"),
-                new Produto(4, "Acompanha: baião, pirão e salada", 40f,
-                "Peixe frito"),
-                new Produto(5, "600ml", 6f, "Skol 600ml"),
-                new Produto(6, "unidade", 3.5f, "Coco natural")));  
+    public ProdutoDao() throws IOException {
+        file = new File("Arquivos/produtos.bin");
+        
+        if (!file.exists()) {
+            file.createNewFile();
+        }
     }
 
     /**
@@ -40,22 +42,40 @@ public class ProdutoDao implements DaoGeneric<Produto> {
      * @return A confirmação da inserção.
      */
     @Override
-    public boolean salvar(Produto p) {
-        for (Produto produto : produtos) {
-            if (p.equals(produto)) {
+    public boolean salvar(Produto p) throws IOException, FileNotFoundException, 
+            ClassNotFoundException {
+        
+        if(buscar(p.getId()) == null){
+            List <Produto> produtos = listar();
+            
+            if(produtos.add(p)){
+                atualizarArquivo(produtos);
+                return true;
+            } else {
                 return false;
             }
-        }
-        return produtos.add(p);
+        } else {
+            return false;
+        }   
     }
 
     /**
      * @param p elemento com tipo Produto que será deletado da lista.
      * @return A confirmação da exclusão.
      */
+    
     @Override
-    public boolean deletar(Produto p) {
-        return produtos.remove(p);
+    public boolean deletar(Produto p) throws IOException, FileNotFoundException, 
+            ClassNotFoundException {
+        
+        List<Produto> produtos = listar();
+        
+        if (produtos.remove(p)) {
+            atualizarArquivo(produtos);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -65,9 +85,13 @@ public class ProdutoDao implements DaoGeneric<Produto> {
      * @return A comanda desejada.
      */
     @Override
-    public Produto buscar(int id) {
+    public Produto buscar(String id) throws IOException, FileNotFoundException, 
+            ClassNotFoundException {
+        
+        List <Produto> produtos = listar();
+        
         for (Produto produto : produtos) {
-            if (produto.getId() == id) {
+            if (id.equals(produto.getId())) {
                 return produto;
             }
         }
@@ -82,10 +106,15 @@ public class ProdutoDao implements DaoGeneric<Produto> {
      * @return A confirmação da atualização.
      */
     @Override
-    public boolean atualizar(Produto produto) {
+    public boolean atualizar(Produto produto) throws IOException, FileNotFoundException,
+            ClassNotFoundException {
+        
+        List <Produto> produtos = listar();
+        
         for (int i = 0; i < produtos.size(); i++) {
-            if (produtos.get(i).equals(produto)) {
+            if (produtos.get(i).getId().equals(produto.getId())) {
                 produtos.set(i, produto);
+                atualizarArquivo(produtos);
                 return true;
             }
         }
@@ -96,7 +125,27 @@ public class ProdutoDao implements DaoGeneric<Produto> {
      * @return Todas os produtos da lista.
      */
     @Override
-    public List<Produto> listar() {
-        return produtos;
+    public List<Produto> listar() throws FileNotFoundException, IOException, 
+            ClassNotFoundException {
+        
+        if(file.length() > 0){
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
+            
+            return (List<Produto>) in.readObject();
+            
+        } else {
+            return new ArrayList<>();
+        }
+    }
+
+    private void atualizarArquivo(List<Produto> produtos) throws FileNotFoundException, 
+            IOException {
+        
+        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
+
+        out.writeObject(produtos);
+        out.close();
     }
 }
+
+  

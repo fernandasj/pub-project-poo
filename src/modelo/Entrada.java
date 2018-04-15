@@ -1,14 +1,14 @@
 package modelo;
 
+import java.io.Serializable;
 import java.util.Objects;
-
 /**
  *
  * @author fernanda
  */
-public abstract class Entrada {
+public abstract class Entrada implements Serializable{
 
-    private int id;
+    private String id;
     private String status;
     private float valor;
 
@@ -16,17 +16,17 @@ public abstract class Entrada {
 
     }
 
-    public Entrada(int id, String status, float valor) {
+    public Entrada(String id, String status, float valor) {
         this.id = id;
         this.status = status;
         this.valor = valor;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -54,8 +54,10 @@ public abstract class Entrada {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 11 * hash + this.id;
+        int hash = 5;
+        hash = 61 * hash + Objects.hashCode(this.id);
+        hash = 61 * hash + Objects.hashCode(this.status);
+        hash = 61 * hash + Float.floatToIntBits(this.valor);
         return hash;
     }
 
@@ -71,9 +73,17 @@ public abstract class Entrada {
             return false;
         }
         final Entrada other = (Entrada) obj;
-        if (this.id != other.id) {
+        if (Float.floatToIntBits(this.valor) != Float.floatToIntBits(other.valor)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.status, other.status)) {
             return false;
         }
         return true;
     }
+
+    
 }
