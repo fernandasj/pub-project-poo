@@ -262,8 +262,8 @@ public class TelaCadastroPedido extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -322,7 +322,6 @@ public class TelaCadastroPedido extends javax.swing.JFrame {
             System.out.println(pedido.getComanda());
             if (daoPedido.buscar(id)== null) {
                 if(daoPedido.salvar(pedido)){
-                    comanda.realizarPedido(pedido);
                     JOptionPane.showMessageDialog(null, "Pedido salvo com sucesso");
                     TelaCadastroPedido cadastroPedido = new TelaCadastroPedido(funcionario);
                     cadastroPedido.setVisible(true);
